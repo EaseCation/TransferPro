@@ -1,2 +1,2 @@
 # TransferPro
-Transfer plugin based on origin transfer for minecraft bedrock
+Transfer plugin based on origin transfer for NukkitX
