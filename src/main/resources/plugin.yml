@@ -1,6 +1,8 @@
 name: TranferPro
 main: net.easecation.transferpro.TransferPro
 version: 1.0.0
+api:
+  - 1.0.0
 load: POSTWORLD
 author: EaseCationTeam
 permissions:

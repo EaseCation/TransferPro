@@ -1,6 +1,7 @@
 package net.easecation.transferpro.provider;
 
 import cn.nukkit.Player;
+import net.easecation.transferpro.TransferPro;
 
 import java.net.InetSocketAddress;
 import java.sql.Timestamp;
@@ -16,11 +17,11 @@ public class TSProServerEntry {
     private int playerCount;
     private int maxPlayerCount;
 
-    private int tps;
+    private float tps;
 
     private Timestamp lastUpdate;
 
-    public TSProServerEntry(String group, String server, InetSocketAddress address, int playerCount, int maxPlayerCount, int tps, Timestamp lastUpdate) {
+    public TSProServerEntry(String group, String server, InetSocketAddress address, int playerCount, int maxPlayerCount, float tps, Timestamp lastUpdate) {
         this.group = group;
         this.server = server;
         this.address = address;
@@ -50,7 +51,7 @@ public class TSProServerEntry {
         return maxPlayerCount;
     }
 
-    public int getTps() {
+    public float getTps() {
         return tps;
     }
 
@@ -58,7 +59,23 @@ public class TSProServerEntry {
         return lastUpdate;
     }
 
-    public TSProServerEntry update(InetSocketAddress address, int playerCount, int maxPlayerCount, int tps, Timestamp lastUpdate) {
+    public boolean isAlive() {
+        return isAlive(TransferPro.getInstance().getConfig().getInt("timeout", 10000)); //10 seconds
+    }
+
+    public boolean isAlive(long timeout) {
+        return System.currentTimeMillis() - lastUpdate.getTime() <= timeout;
+    }
+
+    public boolean equalAddress(TSProServerEntry another) {
+        return another != null && this.address.equals(another.address);
+    }
+
+    public TSProServerEntry update(TSProServerEntry entry) {
+        return update(entry.address, entry.playerCount, entry.maxPlayerCount, entry.tps, entry.lastUpdate);
+    }
+
+    public TSProServerEntry update(InetSocketAddress address, int playerCount, int maxPlayerCount, float tps, Timestamp lastUpdate) {
         this.address = address;
         this.playerCount = playerCount;
         this.maxPlayerCount = maxPlayerCount;
