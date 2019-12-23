@@ -42,7 +42,7 @@ public class DataProvider {
                 return true;
             } else return false;
         } catch (Exception e) {
-            throw new ProviderException("Database connect failed!", e);
+            throw new ProviderException("Database connection failed!", e);
         }
     }
 
