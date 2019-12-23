@@ -9,5 +9,11 @@ permissions:
   tarnsferpro.transfer:
     default: true
     description: "Transfer"
+  tarnsferpro.transferplayer:
+    default: op
+    description: "Transfer Player"
+  tarnsferpro.tspro:
+    default: op
+    description: "Transfer Pro Manage"
 depends:
   - "DbLib"

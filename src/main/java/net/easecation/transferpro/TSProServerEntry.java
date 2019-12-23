@@ -1,6 +1,7 @@
 package net.easecation.transferpro;
 
 import cn.nukkit.Player;
+import cn.nukkit.utils.TextFormat;
 import net.easecation.transferpro.api.event.TSProPlayerTransferEvent;
 
 import java.net.InetSocketAddress;
@@ -67,6 +68,10 @@ public class TSProServerEntry {
         return System.currentTimeMillis() - lastUpdate.getTime() <= timeout;
     }
 
+    public boolean isFull() {
+        return this.playerCount < this.maxPlayerCount;
+    }
+
     public boolean equalAddress(TSProServerEntry another) {
         return another != null && this.address.equals(another.address);
     }
@@ -86,7 +91,15 @@ public class TSProServerEntry {
 
     public void transfer(Player player) {
         boolean isFull = this.playerCount < this.maxPlayerCount;
-        TSProPlayerTransferEvent event = new TSProPlayerTransferEvent(player, this, !isFull, isFull ? TransferPro.getInstance().getLang().translateString("") : TransferPro.getInstance().getLang().translateString(""));
+        TSProPlayerTransferEvent event =
+                new TSProPlayerTransferEvent(player,
+                        this,
+                        !isFull,
+                        isFull ?
+                                TransferPro.getInstance().getLang().translateString("tspro.transfer.full", this.group, this.server, this.playerCount, this.maxPlayerCount)
+                                :
+                                TransferPro.getInstance().getLang().translateString("tspro.transfer.ing", this.group, this.server)
+                );
         TransferPro.getInstance().getServer().getPluginManager().callEvent(event);
         if (event.isSuccess()) {
             player.sendMessage(event.getMessage());
@@ -96,4 +109,10 @@ public class TSProServerEntry {
         }
     }
 
+    @Override
+    public String toString() {
+        return TextFormat.YELLOW + "[" + group + (group.isEmpty() ? "" : "|") + server + "] " + TextFormat.RESET +
+                address +
+                " (" + playerCount + "/" + maxPlayerCount + ") TPS=" + tps + " LastUpdate=" + lastUpdate;
+    }
 }

@@ -6,6 +6,9 @@ import cn.nukkit.event.server.QueryRegenerateEvent;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.TextFormat;
 import net.easecation.transferpro.api.TransferProAPI;
+import net.easecation.transferpro.command.TargetTransferCommand;
+import net.easecation.transferpro.command.TransferCommand;
+import net.easecation.transferpro.command.TsProCommand;
 import net.easecation.transferpro.provider.DataProvider;
 
 public class TransferPro extends PluginBase implements Listener {
@@ -41,6 +44,11 @@ public class TransferPro extends PluginBase implements Listener {
             this.setEnabled(false);
             return;
         }
+
+        getServer().getCommandMap().register("TransferPro", new TsProCommand(this));
+        getServer().getCommandMap().register("TransferPro", new TransferCommand(this));
+        getServer().getCommandMap().register("TransferPro", new TargetTransferCommand(this));
+
         this.getServer().getPluginManager().registerEvents(this, this);
         this.getLogger().info(TextFormat.GREEN + "TransferPro enabled!");
     }
