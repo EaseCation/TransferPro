@@ -1,0 +1,11 @@
+name: TranferPro
+main: net.easecation.transferpro.TransferPro
+version: 1.0.0
+load: POSTWORLD
+author: EaseCationTeam
+permissions:
+  tarnsferpro.transfer:
+    default: true
+    description: "Transfer"
+depends:
+  - "DbLib"

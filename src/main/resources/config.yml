@@ -1,0 +1,8 @@
+my-group: ""
+my-server: "serverid"
+my-address: "127.0.0.1"
+
+dictionary:
+  transfer.suc: "Transfer success!"
+  transfer.fail.notfound: "Target server {0} not found"
+  transfer.fail.full: "Target server is full: {0}/{1}"
