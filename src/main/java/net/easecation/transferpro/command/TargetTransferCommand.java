@@ -53,7 +53,7 @@ public class TargetTransferCommand extends PluginCommand<TransferPro> {
                 sender.sendMessage(getPlugin().getLang().translateString("tspro.command.player-not-found"));
             }
         } else {
-            sender.sendMessage("Usage: /transfer <player> <group> [serverid]");
+            sender.sendMessage(getPlugin().getLang().translateString("tspro.command.usage.transferplayer"));
         }
         return true;
     }

@@ -8,13 +8,10 @@ import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.lang.TranslationContainer;
 import cn.nukkit.utils.TextFormat;
-import net.easecation.transferpro.TSProServerEntry;
 import net.easecation.transferpro.TransferPro;
 import net.easecation.transferpro.api.ServerMatchResult;
 import net.easecation.transferpro.api.TransferProAPI;
 
-import java.util.List;
-import java.util.Map;
 
 public class TransferCommand extends PluginCommand<TransferPro> {
 
@@ -46,7 +43,7 @@ public class TransferCommand extends PluginCommand<TransferPro> {
                 if (result.getServer() != null) result.getServer().transfer((Player) sender);
                 else sender.sendMessage(result.getResultType().getMessage());
             } else {
-                sender.sendMessage("Usage: /transfer <group> [serverid]");
+                sender.sendMessage(getPlugin().getLang().translateString("tspro.command.usage.transfer"));
             }
         } else {
             sender.sendMessage(getPlugin().getLang().translateString("tspro.command.only-player"));
