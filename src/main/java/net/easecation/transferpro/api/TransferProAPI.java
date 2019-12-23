@@ -1,8 +1,11 @@
-package net.easecation.transferpro;
+package net.easecation.transferpro.api;
 
-import net.easecation.transferpro.provider.TSProServerEntry;
+import net.easecation.transferpro.TransferPro;
+import net.easecation.transferpro.TSProServerEntry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,14 @@ public final class TransferProAPI {
 
     public static TSProServerEntry getServerEntry(String group, String server) {
         return getGroupEntries(group).get(server);
+    }
+
+    public static List<TSProServerEntry> findServerEntry(String server) {
+        List<TSProServerEntry> result = new ArrayList<>();
+        getServerEntries().values().forEach(entries ->
+                result.addAll(entries.values().stream().filter(e -> e.getServer().equals(server)).collect(Collectors.toList()))
+        );
+        return result;
     }
 
     public static int getGroupPlayerCount(String group) {

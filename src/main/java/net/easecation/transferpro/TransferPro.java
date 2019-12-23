@@ -1,10 +1,14 @@
 package net.easecation.transferpro;
 
+import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.Listener;
+import cn.nukkit.event.server.QueryRegenerateEvent;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.TextFormat;
+import net.easecation.transferpro.api.TransferProAPI;
 import net.easecation.transferpro.provider.DataProvider;
 
-public class TransferPro extends PluginBase {
+public class TransferPro extends PluginBase implements Listener {
 
     private static TransferPro instance;
 
@@ -34,8 +38,16 @@ public class TransferPro extends PluginBase {
             serversSync = new ServersSync(this);
         } else {
             this.getLogger().info(lang.translateString("tspro.enabling.fail.database"));
+            this.setEnabled(false);
+            return;
         }
+        this.getServer().getPluginManager().registerEvents(this, this);
         this.getLogger().info(TextFormat.GREEN + "TransferPro enabled!");
+    }
+
+    @Override
+    public void onDisable() {
+        provider.close();
     }
 
     public Dictionary getLang() {
@@ -48,5 +60,21 @@ public class TransferPro extends PluginBase {
 
     public ServersSync getServersSync() {
         return serversSync;
+    }
+
+    @EventHandler
+    public void onQueryRegenerate(QueryRegenerateEvent event) {
+        String sync = this.getConfig().getString("sync-player-count", "all");
+        if (sync.equalsIgnoreCase("all")) {
+            event.setPlayerCount(TransferProAPI.getTotalPlayerCount());
+            event.setMaxPlayerCount(TransferProAPI.getTotalMaxPlayerCount());
+        } else {
+            int count = TransferProAPI.getGroupPlayerCount(sync);
+            int max = TransferProAPI.getGroupMaxPlayerCount(sync);
+            if (count != 0 || max != 0) {
+                event.setPlayerCount(count);
+                event.setMaxPlayerCount(count);
+            }
+        }
     }
 }

@@ -3,4 +3,6 @@ language: chs
 my-group: ""
 my-server: ""
 my-address: ""
+
 timeout: 10000
+sync-player-count: all

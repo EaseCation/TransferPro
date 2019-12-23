@@ -3,7 +3,7 @@ package net.easecation.transferpro.task;
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.AsyncTask;
 import net.easecation.transferpro.ServersSync;
-import net.easecation.transferpro.provider.TSProServerEntry;
+import net.easecation.transferpro.TSProServerEntry;
 
 import java.util.HashMap;
 import java.util.Map;

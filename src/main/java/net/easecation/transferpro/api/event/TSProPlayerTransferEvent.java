@@ -1,9 +1,9 @@
-package net.easecation.transferpro.event;
+package net.easecation.transferpro.api.event;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.HandlerList;
 import cn.nukkit.event.player.PlayerEvent;
-import net.easecation.transferpro.provider.TSProServerEntry;
+import net.easecation.transferpro.TSProServerEntry;
 
 public class TSProPlayerTransferEvent extends PlayerEvent {
 

@@ -3,11 +3,8 @@ package net.easecation.transferpro.task;
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.AsyncTask;
 import net.easecation.transferpro.ServersSync;
-import net.easecation.transferpro.TransferProAPI;
-import net.easecation.transferpro.provider.TSProServerEntry;
-
-import java.util.HashMap;
-import java.util.Map;
+import net.easecation.transferpro.api.TransferProAPI;
+import net.easecation.transferpro.TSProServerEntry;
 
 public class UpdateMeAsyncTask extends AsyncTask {
 

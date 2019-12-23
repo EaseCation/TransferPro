@@ -1,6 +1,5 @@
 package net.easecation.transferpro;
 
-import net.easecation.transferpro.provider.TSProServerEntry;
 import net.easecation.transferpro.task.FetchAllServersAsyncTask;
 import net.easecation.transferpro.task.UpdateMeAsyncTask;
 

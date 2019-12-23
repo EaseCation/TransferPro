@@ -1,7 +1,7 @@
-package net.easecation.transferpro.provider;
+package net.easecation.transferpro;
 
 import cn.nukkit.Player;
-import net.easecation.transferpro.TransferPro;
+import net.easecation.transferpro.api.event.TSProPlayerTransferEvent;
 
 import java.net.InetSocketAddress;
 import java.sql.Timestamp;
@@ -85,7 +85,15 @@ public class TSProServerEntry {
     }
 
     public void transfer(Player player) {
-        player.transfer(address);
+        boolean isFull = this.playerCount < this.maxPlayerCount;
+        TSProPlayerTransferEvent event = new TSProPlayerTransferEvent(player, this, !isFull, isFull ? TransferPro.getInstance().getLang().translateString("") : TransferPro.getInstance().getLang().translateString(""));
+        TransferPro.getInstance().getServer().getPluginManager().callEvent(event);
+        if (event.isSuccess()) {
+            player.sendMessage(event.getMessage());
+            player.transfer(address);
+        } else {
+            player.sendMessage(event.getMessage());
+        }
     }
 
 }

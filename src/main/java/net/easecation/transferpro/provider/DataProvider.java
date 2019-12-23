@@ -1,6 +1,6 @@
 package net.easecation.transferpro.provider;
 
-import cn.nukkit.utils.TextFormat;
+import net.easecation.transferpro.TSProServerEntry;
 import net.easecation.transferpro.TransferPro;
 import ru.nukkit.dblib.DbLib;
 
@@ -21,10 +21,10 @@ public class DataProvider {
         this.plugin = plugin;
     }
 
-    public boolean connect() throws ProviderException {
+    public void close() {
         try {
             if (connection != null && !connection.isClosed()) {
-                plugin.getLogger().info("Closing connection...");
+                plugin.getLogger().info(plugin.getLang().translateString("tspro.provider.closing"));
                 connection.close();
             }
         } catch (SQLException e) {
@@ -32,7 +32,11 @@ public class DataProvider {
         } finally {
             connection = null;
         }
-        plugin.getLogger().info("Connecting database...");
+    }
+
+    public boolean connect() throws ProviderException {
+        this.close();
+        plugin.getLogger().info(plugin.getLang().translateString("tspro.provider.connecting"));
         try {
             Connection conn = DbLib.getDefaultConnection();
             if (conn != null) {
@@ -41,11 +45,11 @@ public class DataProvider {
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.execute();
                 this.connection = conn;
-                plugin.getLogger().info(TextFormat.GREEN + "Database connected...");
+                plugin.getLogger().info(plugin.getLang().translateString("tspro.provider.connected"));
                 return true;
             } else return false;
         } catch (Exception e) {
-            throw new ProviderException("Database connection failed!", e);
+            throw new ProviderException(plugin.getLang().translateString("tspro.provider.fail"), e);
         }
     }
 
