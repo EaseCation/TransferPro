@@ -5,7 +5,7 @@ Transfer plugin based on origin transfer for Nukkit
 
 前置插件：[DbLib](https://github.com/fromgate/DbLib/releases)
 
-### 具体功能
+## 具体功能
 
 1. 对多服务器的实时状态的统一管理与查看
 2. 通过「群组」与「服务器ID」跨服
@@ -16,9 +16,9 @@ Transfer plugin based on origin transfer for Nukkit
     - 可获取所有服务器的实时信息
     - 可控制和自定义玩家跨服时的行为与提示
 
-### 基础配置步骤
+## 基础配置步骤
 
-1. 配置DbLib插件的数据源，使群组服内所有服务器都连接到同一个数据源
+1. [配置DbLib插件](https://github.com/fromgate/DbLib#configuration)的数据源，使群组服内所有服务器都连接到同一个数据源
 2. 开启群组服内所有Nukkit，你需要为每个Nukkit配置其「群组（可选）」、「服务器ID」、「可直连地址（不包含端口）」
     - 在控制台输入指令：`tspro setme [群组] <服务器ID> <可直连地址>`  
     如 `/tspro setme group1 server1 play.easecation.net`
@@ -26,6 +26,7 @@ Transfer plugin based on origin transfer for Nukkit
 
 ----------
 
+## z指令
 ### 玩家自身跨服指令 `/transfer`
 
 - 指令别名：`/ts`
