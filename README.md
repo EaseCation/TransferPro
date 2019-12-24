@@ -24,16 +24,15 @@ Transfer plugin based on origin transfer for Nukkit
     如 `/tspro setme group1 server1 play.easecation.net`
 3. 当在所有Nukkit中配置完成后，在控制台输入指令`tspro dump`，如果配置正确，你将看到所有服务器的实时信息
 
-----------
+## 指令
 
-## z指令
-### 玩家自身跨服指令 `/transfer`
+#### 玩家自身跨服指令 `/transfer`
 
 - 指令别名：`/ts`
 - 默认权限：所有玩家
 - 使用方法：`/transfer [群组] <服务器ID>`
 
-### 使某玩家跨服 `/transferplayer`
+#### 使某玩家跨服 `/transferplayer`
 
 - 指令别名：`/tsp`
 - 默认权限：仅OP
