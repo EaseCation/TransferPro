@@ -26,6 +26,14 @@ Transfer plugin based on origin transfer for Nukkit
 
 ## 指令
 
+#### 控制台相关指令 `tspro`
+
+- 默认权限：仅控制台
+- 使用方法：`tspro <setme|dump|exportlang>`
+  - `tspro setme [群组] <服务器ID> <可直连地址>` 配置本服务器的基础信息（详见[基础配置步骤](#基础配置步骤)）
+  - `tspro dump [群组]` 列出所有服务器信息
+  - `tspro exportlang` 导出语言文件至插件目录下的lang.ini，可自定义修改配置，重启生效
+
 #### 玩家自身跨服指令 `/transfer`
 
 - 指令别名：`/ts`
