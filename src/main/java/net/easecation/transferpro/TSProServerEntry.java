@@ -89,6 +89,11 @@ public class TSProServerEntry {
         return this;
     }
 
+    public TSProServerEntry setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+        return this;
+    }
+
     public void transfer(Player player) {
         TSProPlayerTransferEvent event =
                 new TSProPlayerTransferEvent(player,

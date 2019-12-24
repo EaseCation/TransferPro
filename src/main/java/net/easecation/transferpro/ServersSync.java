@@ -40,11 +40,13 @@ public class ServersSync {
 
     public boolean startMyUpdate() {
         if (local != null) {
-            local = null;
             if (updateTask != null) {
                 updateTask.cancel();
                 updateTask = null;
             }
+            this.local.setLastUpdate(new Timestamp(0));
+            new UpdateMeAsyncTask(this).onRun(); //Sync database update
+            local = null;
         }
         String group = plugin.getConfig().getString("my-group");
         String server = plugin.getConfig().getString("my-server");
