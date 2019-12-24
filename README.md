@@ -5,7 +5,7 @@ Transfer plugin based on origin transfer for Nukkit
 
 前置插件：[DbLib](https://github.com/fromgate/DbLib/releases)
 
-#### 基础配置步骤
+### 基础配置步骤
 
 1. 配置DbLib插件的数据源，使群组服内所有服务器都连接到同一个数据源
 2. 开启群组服内所有Nukkit，你需要为每个Nukkit配置其「群组」、「服务器ID」、「可直连地址」
@@ -14,10 +14,10 @@ Transfer plugin based on origin transfer for Nukkit
 
 ----------
 
-#### 玩家自身跨服指令 `/transfer`
+### 玩家自身跨服指令 `/transfer`
 - 默认权限：所有玩家
 - 使用方法: /transfer [群组] <服务器ID>
 
-#### 使某玩家跨服 `/transferplayer`
+### 使某玩家跨服 `/transferplayer`
 - 默认权限：仅OP
 - 使用方法: /transfer <目标玩家> [群组] <服务器ID>
