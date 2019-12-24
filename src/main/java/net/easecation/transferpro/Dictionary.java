@@ -45,6 +45,10 @@ public class Dictionary {
         return langName;
     }
 
+    public void mergeLang(Map<String, String> lang) {
+        this.lang.putAll(lang);
+    }
+
     protected Map<String, String> loadLang(String path) {
         try {
             String content = Utils.readFile(path);

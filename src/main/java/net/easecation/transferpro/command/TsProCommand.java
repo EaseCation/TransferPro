@@ -35,6 +35,9 @@ public class TsProCommand extends PluginCommand<TransferPro> {
                 new CommandParameter("dump", new String[]{"dump"}),
                 new CommandParameter("group", true)
         });
+        this.commandParameters.put("exportlang", new CommandParameter[]{
+                new CommandParameter("exportlang", new String[]{"exportlang"}),
+        });
     }
 
     @Override
@@ -94,6 +97,9 @@ public class TsProCommand extends PluginCommand<TransferPro> {
                         });
                     }
                     break;
+                case "exportlang":
+                    this.getPlugin().saveResource("tspro/lang/" + this.getPlugin().getLang().getLang() + ".ini", "lang.ini", true);
+                    sender.sendMessage(getPlugin().getLang().translateString("tspro.command.exportlang"));
                 default:
                     sender.sendMessage(getPlugin().getLang().translateString("tspro.command.usage.tspro"));
                     break;

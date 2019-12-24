@@ -11,6 +11,8 @@ import net.easecation.transferpro.command.TransferCommand;
 import net.easecation.transferpro.command.TsProCommand;
 import net.easecation.transferpro.provider.DataProvider;
 
+import java.io.File;
+
 public class TransferPro extends PluginBase implements Listener {
 
     private static TransferPro instance;
@@ -32,6 +34,11 @@ public class TransferPro extends PluginBase implements Listener {
         this.saveConfig();
         String lang0 = this.getConfig().getString("language", "chs");
         this.lang = new Dictionary(lang0, getResource("tspro/lang/" + lang0 + ".ini"));
+        File filePath = new File(this.getDataFolder(), "lang.ini");
+        if (filePath.exists() && filePath.isFile()) {
+            this.lang.mergeLang(this.lang.loadLang(filePath.getPath()));
+            this.getLogger().info(lang.translateString("tspro.lang.merge"));
+        }
     }
 
     @Override
@@ -50,7 +57,7 @@ public class TransferPro extends PluginBase implements Listener {
         getServer().getCommandMap().register("TransferPro", new TargetTransferCommand(this));
 
         this.getServer().getPluginManager().registerEvents(this, this);
-        this.getLogger().info(TextFormat.GREEN + "TransferPro enabled!");
+        this.getLogger().info(lang.translateString("tspro.enabled"));
     }
 
     @Override
