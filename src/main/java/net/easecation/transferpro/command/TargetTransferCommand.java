@@ -19,8 +19,8 @@ import java.util.Map;
 public class TargetTransferCommand extends PluginCommand<TransferPro> {
 
     public TargetTransferCommand(TransferPro owner) {
-        super("playertransfer", owner);
-        this.setAliases(new String[]{"pts"});
+        super("transferplayer", owner);
+        this.setAliases(new String[]{"tsp"});
         this.setDescription("Transfer Player Command");
         this.commandParameters.clear();
         this.commandParameters.put("target", new CommandParameter[]{
