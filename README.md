@@ -15,9 +15,9 @@ Transfer plugin based on origin transfer for Nukkit
 ----------
 
 #### 玩家自身跨服指令 `/transfer`
-默认权限：所有玩家
-使用方法: /transfer [群组] <服务器ID>
+- 默认权限：所有玩家
+- 使用方法: /transfer [群组] <服务器ID>
 
 #### 使某玩家跨服 `/transferplayer`
-默认权限：仅OP
-使用方法: /transfer <目标玩家> [群组] <服务器ID>
+- 默认权限：仅OP
+- 使用方法: /transfer <目标玩家> [群组] <服务器ID>
