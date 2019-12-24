@@ -35,19 +35,25 @@ public class TransferCommand extends PluginCommand<TransferPro> {
             sender.sendMessage(new TranslationContainer(TextFormat.RED + "%commands.generic.permission"));
             return false;
         }
-        if (sender instanceof Player) {
+        //if (sender instanceof Player) {
             if (args.length > 0) {
                 String arg0 = args[0];
                 String arg1 = args.length > 1 ? args[1] : null;
                 ServerMatchResult result = TransferProAPI.match(arg0, arg1);
-                if (result.getServer() != null) result.getServer().transfer((Player) sender);
+                if (result.getServer() != null) {
+                    if (sender instanceof Player) {
+                        result.getServer().transfer((Player) sender);
+                    } else {
+                        getPlugin().getLogger().info(result.getServer().toString());
+                    }
+                }
                 else sender.sendMessage(result.getResultType().getMessage());
             } else {
                 sender.sendMessage(getPlugin().getLang().translateString("tspro.command.usage.transfer"));
             }
-        } else {
-            sender.sendMessage(getPlugin().getLang().translateString("tspro.command.only-player"));
-        }
+        //} else {
+            //sender.sendMessage(getPlugin().getLang().translateString("tspro.command.only-player"));
+        //}
         return true;
     }
 

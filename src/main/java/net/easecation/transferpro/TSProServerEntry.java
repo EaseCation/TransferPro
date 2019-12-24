@@ -69,7 +69,7 @@ public class TSProServerEntry {
     }
 
     public boolean isFull() {
-        return this.playerCount < this.maxPlayerCount;
+        return this.playerCount >= this.maxPlayerCount;
     }
 
     public boolean equalAddress(TSProServerEntry another) {

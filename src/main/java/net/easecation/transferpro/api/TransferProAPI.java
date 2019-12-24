@@ -120,7 +120,7 @@ public final class TransferProAPI {
         int count = getGroupPlayerCount(group);
         int max = getGroupMaxPlayerCount(group);
         if (count == 0 && max == 0) return true;
-        else return count < max;
+        else return count >= max;
     }
 
     /**
@@ -168,7 +168,7 @@ public final class TransferProAPI {
         } else { //arg0 是 server
             List<TSProServerEntry> found = findServerEntry(arg0);
             if (found.isEmpty()) return new ServerMatchResult(ServerMatchResultType.SERVER_FIND_FAIL, null);
-            if (found.stream().mapToInt(TSProServerEntry::getPlayerCount).sum() < found.stream().mapToInt(TSProServerEntry::getMaxPlayerCount).sum())
+            if (found.stream().mapToInt(TSProServerEntry::getPlayerCount).sum() >= found.stream().mapToInt(TSProServerEntry::getMaxPlayerCount).sum())
                 return new ServerMatchResult(ServerMatchResultType.FULL, null);
             else {
                 TSProServerEntry server = found.stream().filter(e -> !e.isFull()).findFirst().orElse(null);
