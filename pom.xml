@@ -9,17 +9,29 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>nukkitx-releases</id>
+            <id>releases</id>
             <name>nukkitx-releases</name>
             <url>https://repo.nukkitx.com/release</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>nukkitx-snapshots</name>
+            <url>https://repo.nukkitx.com/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
         <repository>
+            <id>nukkitx-repo</id>
+            <url>https://repo.nukkitx.com/snapshot</url>
+        </repository>
+        <!--<repository>
             <id>dblib</id>
             <name>dblib</name>
             <url>https://raw.github.com/fromgate/DbLib/master/</url>
-        </repository>
+        </repository>-->
     </repositories>
 
     <dependencies>
