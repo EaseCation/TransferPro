@@ -16,8 +16,9 @@ Transfer plugin based on origin transfer for Nukkit
 ### 基础配置步骤
 
 1. 配置DbLib插件的数据源，使群组服内所有服务器都连接到同一个数据源
-2. 开启群组服内所有Nukkit，你需要为每个Nukkit配置其「群组」、「服务器ID」、「可直连地址」
-    - 在控制台输入指令：`tspro setme [群组] <服务器ID> <可直连地址>` 如 `/tspro setme group1 server1 play.easecation.net`
+2. 开启群组服内所有Nukkit，你需要为每个Nukkit配置其「群组（可选）」、「服务器ID」、「可直连地址（不包含端口）」
+    - 在控制台输入指令：`tspro setme [群组] <服务器ID> <可直连地址>`  
+    如 `/tspro setme group1 server1 play.easecation.net`
 3. 当在所有Nukkit中配置完成后，在控制台输入指令`tspro dump`，如果配置正确，你将看到所有服务器的实时信息
 
 ----------
