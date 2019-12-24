@@ -90,12 +90,11 @@ public class TSProServerEntry {
     }
 
     public void transfer(Player player) {
-        boolean isFull = this.playerCount < this.maxPlayerCount;
         TSProPlayerTransferEvent event =
                 new TSProPlayerTransferEvent(player,
                         this,
-                        !isFull,
-                        isFull ?
+                        !isFull(),
+                        isFull() ?
                                 TransferPro.getInstance().getLang().translateString("tspro.transfer.full", this.group, this.server, this.playerCount, this.maxPlayerCount)
                                 :
                                 TransferPro.getInstance().getLang().translateString("tspro.transfer.ing", this.group, this.server)
