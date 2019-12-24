@@ -9,6 +9,19 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+    <repositories>
+        <repository>
+            <id>nukkitx-releases</id>
+            <name>nukkitx-releases</name>
+            <url>https://repo.nukkitx.com/release</url>
+        </repository>
+        <repository>
+            <id>dblib</id>
+            <name>dblib</name>
+            <url>https://raw.github.com/fromgate/DbLib/master/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>cn.nukkit</groupId>
