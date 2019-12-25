@@ -100,6 +100,7 @@ public class TsProCommand extends PluginCommand<TransferPro> {
                 case "exportlang":
                     this.getPlugin().saveResource("tspro/lang/" + this.getPlugin().getLang().getLang() + ".ini", "lang.ini", true);
                     sender.sendMessage(getPlugin().getLang().translateString("tspro.command.exportlang"));
+                    break;
                 default:
                     sender.sendMessage(getPlugin().getLang().translateString("tspro.command.usage.tspro"));
                     break;
