@@ -108,4 +108,15 @@ public class DataProvider {
         }
     }
 
+    public void cleanOfflineServers() throws ProviderException {
+        Connection connection = getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM tspro_servers WHERE last_update < ?");
+            statement.setTimestamp(1, new Timestamp(System.currentTimeMillis() - plugin.getConfig().getInt("timeout", 10000)));
+            statement.execute();
+        } catch (SQLException e) {
+            throw new ProviderException("Exception caught when cleanOfflineServers", e);
+        }
+    }
+
 }

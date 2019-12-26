@@ -33,6 +33,7 @@ Transfer plugin based on origin transfer for Nukkit
   - `tspro setme [群组] <服务器ID> <可直连地址>` 配置本服务器的基础信息（详见[基础配置步骤](#基础配置步骤)）
   - `tspro dump [群组]` 列出所有服务器信息
   - `tspro exportlang` 导出语言文件至插件目录下的lang.ini，可自定义修改配置，重启生效
+  - `tspro clean` 清理数据库中已离线的服务器信息
 
 #### 玩家自身跨服指令 `/transfer`
 
