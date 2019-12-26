@@ -60,6 +60,10 @@ public class TsProCommand extends PluginCommand<TransferPro> {
                                 sender.sendMessage(getPlugin().getLang().translateString("tspro.server-sync.update.init.fail.my-address.reason", illegalArgumentException.getLocalizedMessage()));
                                 return true;
                             }
+                            if (args[1].length() > 32 || args[2].length() > 32) {
+                                sender.sendMessage(getPlugin().getLang().translateString("tspro.server-sync.update.init.fail.too-long"));
+                                return true;
+                            }
                             getPlugin().getConfig().set("my-group", args[1]);
                             getPlugin().getConfig().set("my-server", args[2]);
 
@@ -67,6 +71,10 @@ public class TsProCommand extends PluginCommand<TransferPro> {
                         } else {
                             if ((illegalArgumentException = checkAddress(args[2])) != null) {
                                 sender.sendMessage(getPlugin().getLang().translateString("tspro.server-sync.update.init.fail.my-address.reason", illegalArgumentException.getLocalizedMessage()));
+                                return true;
+                            }
+                            if (args[1].length() > 32) {
+                                sender.sendMessage(getPlugin().getLang().translateString("tspro.server-sync.update.init.fail.too-long"));
                                 return true;
                             }
                             getPlugin().getConfig().set("my-server", args[1]);
