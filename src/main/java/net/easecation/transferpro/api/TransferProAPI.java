@@ -58,11 +58,33 @@ public final class TransferProAPI {
     /**
      * 根据Group和Server名称精确获取某个服务器信息
      * @param group 群组
-     * @param server 服务器名
+     * @param server 服务器ID
      * @return 服务器信息
      */
     public static TSProServerEntry getServerEntry(String group, String server) {
         return getGroupEntries(group).get(server);
+    }
+
+    /**
+     * 根据Group和Server名称精确获取某个服务器的在线人数
+     * @param group 群组
+     * @param server 服务器ID
+     * @return 在线人数
+     */
+    public static int getServerPlayerCount(String group, String server) {
+        TSProServerEntry entry = getServerEntry(group, server);
+        return entry != null ? entry.getPlayerCount() : 0;
+    }
+
+    /**
+     * 根据Group和Server名称精确获取某个服务器的最大人数
+     * @param group 群组
+     * @param server 服务器ID
+     * @return 最大人数
+     */
+    public static int getServerMaxPlayerCount(String group, String server) {
+        TSProServerEntry entry = getServerEntry(group, server);
+        return entry != null ? entry.getMaxPlayerCount() : 0;
     }
 
     /**
