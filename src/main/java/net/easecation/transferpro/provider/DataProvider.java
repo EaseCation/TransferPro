@@ -96,7 +96,7 @@ public class DataProvider {
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, entry.getGroup());
             statement.setString(2, entry.getServer());
-            statement.setString(3, entry.getAddress().getHostName());
+            statement.setString(3, entry.getAddress().getAddress().getHostAddress());
             statement.setInt(4, entry.getAddress().getPort());
             statement.setInt(5, plugin.getServer().getOnlinePlayers().size());
             statement.setInt(6, plugin.getServer().getMaxPlayers());

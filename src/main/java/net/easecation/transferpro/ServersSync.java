@@ -58,6 +58,10 @@ public class ServersSync {
             plugin.getLogger().warning(plugin.getLang().translateString("tspro.server-sync.update.init.fail.my-address"));
             return false;
         }
+        if (group.length() > 32 || server.length() > 32) {
+            plugin.getLogger().warning(plugin.getLang().translateString("tspro.server-sync.update.init.fail.too-long"));
+            return false;
+        }
         InetSocketAddress addr;
         try {
             addr = new InetSocketAddress(address, plugin.getServer().getPort());
