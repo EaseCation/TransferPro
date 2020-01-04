@@ -46,6 +46,7 @@ public class DataProvider {
                 statement.execute();
                 this.connection = conn;
                 plugin.getLogger().info(plugin.getLang().translateString("tspro.provider.connected"));
+                statement.close();
                 return true;
             } else return false;
         } catch (Exception e) {
@@ -83,6 +84,7 @@ public class DataProvider {
                         rs.getTimestamp("last_update")
                 ));
             }
+            statement.close();
             return list.toArray(new TSProServerEntry[0]);
         } catch (SQLException e) {
             throw new ProviderException("Exception caught when getAllServers", e);
@@ -103,6 +105,7 @@ public class DataProvider {
             statement.setFloat(7, plugin.getServer().getTicksPerSecond());
             statement.setTimestamp(8, new Timestamp(System.currentTimeMillis()));
             statement.execute();
+            statement.close();
         } catch (SQLException e) {
             throw new ProviderException("Exception caught when updateServerEntry", e);
         }
@@ -114,6 +117,7 @@ public class DataProvider {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM tspro_servers WHERE last_update < ?");
             statement.setTimestamp(1, new Timestamp(System.currentTimeMillis() - plugin.getConfig().getInt("timeout", 10000)));
             statement.execute();
+            statement.close();
         } catch (SQLException e) {
             throw new ProviderException("Exception caught when cleanOfflineServers", e);
         }
