@@ -50,7 +50,7 @@ public class TsProCommand extends PluginCommand<TransferPro> {
             return false;
         }
         if (args.length > 0) {
-            switch (args[0]) {
+            switch (args[0].toLowerCase()) { // 忽略大小写
                 case "setme":
                     if (sender instanceof Player) {
                         sender.sendMessage(getPlugin().getLang().translateString("tspro.command.only-console"));

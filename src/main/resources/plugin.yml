@@ -1,6 +1,7 @@
 name: TranferPro
 main: net.easecation.transferpro.TransferPro
-version: 1.1.5
+# 自动填写版本号
+version: "${pom.version}"
 api:
   - 1.0.0
 load: POSTWORLD
@@ -15,5 +16,5 @@ permissions:
   tarnsferpro.tspro:
     default: op
     description: "Transfer Pro Manage"
-depends:
+depend:
   - "DbLib"
